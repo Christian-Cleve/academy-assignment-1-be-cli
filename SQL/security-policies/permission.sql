@@ -1,3 +1,4 @@
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO postgres;
 ALTER TABLE public.permission ENABLE ROW LEVEL SECURITY;
 
 DROP POLICY IF EXISTS permission_select on public.permission;
@@ -34,3 +35,4 @@ AS PERMISSIVE
 FOR DELETE TO authenticated USING (
   has_permission('MANAGE_PERMISSIONS')
 );
+

@@ -15,33 +15,12 @@ export class Profile {
   id: string;
 
   @Column()
-  first_name: string;
+  name: string;
 
   @Column()
-  last_name: string;
+  Lname: string;
 
   @Column()
-  age: number;
+  email: string;
 
-  @Column({ default: false })
-  subscription_active: boolean;
-
-  @ManyToMany(() => Role, { cascade: ['insert', 'update'] })
-  @JoinTable({
-    name: 'profile_role_junction',
-    joinColumn: {
-      name: 'profile_fk',
-    },
-    inverseJoinColumn: {
-      name: 'role_fk',
-    },
-  })
-  roles: Role[];
-
-  @ManyToOne(() => IOSSubscription, { nullable: true })
-  @JoinColumn({
-    name: 'ios_subscription_fk',
-    referencedColumnName: 'id',
-  })
-  ios_subscription_fk: IOSSubscription;
 }
